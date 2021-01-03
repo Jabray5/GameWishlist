@@ -1,13 +1,17 @@
-from Game import Game
+from game import Game
+from Stores import steam
 
 
 class Wishlist:
 
-    def __init__(self, wishlist=None):
+    def __init__(self, wishlist=None, country_code='GB'):
         if wishlist is None:
             self.wishlist = []
         else:
             self.wishlist = wishlist
+
+        Game.COUNTRY_CODE = country_code
+        Game.CURRENCY = steam.get_currency_by_country_code(country_code)
 
     def wishlist_add(self, game):
         game_to_add = Game(game)
