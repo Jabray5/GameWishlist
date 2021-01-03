@@ -17,7 +17,7 @@ def get_app_name(game_id):
 def get_app_price(game_id, country_code):
     url = "https://store.steampowered.com/api/appdetails?appids=" + game_id + "&cc=" + country_code
     res = requests.get(url)
-    price = json.loads(res.content)[game_id]["data"]["price_overview"]
+    price = json.loads(res.content)[game_id]["data"]["price_overview"]['final'] / 100
     return price
 
 
