@@ -4,6 +4,8 @@ import json
 
 
 def get_app_id_by_query(query):
+    # Currently gets the first name in the search result, this is a problem when games have sequels with similar names,
+    # i.e. "Super Meat Boy" will grab "Super Meat Boy Forever" currently due to Steam's ranking
     res = requests.get("https://store.steampowered.com/search/?term=" + query)
     soup = BeautifulSoup(res.content, "html.parser")
     return soup.find('a', class_="search_result_row ds_collapse_flag")['data-ds-appid']

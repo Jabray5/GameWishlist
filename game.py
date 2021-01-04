@@ -1,4 +1,4 @@
-from Stores import steam
+from Stores import steam, epic
 
 
 class Game:
@@ -21,7 +21,10 @@ class Game:
         self.steam_discount = steam.get_discount_amount(self.steam_id, Game.COUNTRY_CODE)
         self.steam_on_sale = self.steam_discount > 0
 
-        self.epic_price = None
+        epic_api = epic.EpicStoreAPI(country=self.COUNTRY_CODE)
+        self.epic_slug = epic_api.get_slug_from_query(self.title)
+        self.epic_base_price, self.epic_price, self.epic_discount = epic_api.get_price_from_slug(self.epic_slug).values()
+        self.epic_on_sale = self.epic_discount > 0
 
         self.gog_price = None
 
@@ -37,11 +40,11 @@ class Game:
         self.steam_discount = steam.get_discount_amount(self.steam_id)
         self.steam_on_sale = self.steam_discount > 0
 
-    # Check against wishlist prices
-
-    # Print all info
+    # Print game info. This will be handled by a printer class eventually
     def print_info(self):
         print()
-        print(f"Game: {self.title}\tBase price: {self.base_price}{self.CURRENCY}")
-        print(f"Steam")
-        print(f"On sale: {self.steam_on_sale}\tDiscount: {self.steam_discount}%\tPrice: {self.steam_price}{self.CURRENCY}")
+        print(f"Game: {self.title}")
+        print(f"Steam (Base price: {self.base_price}{self.CURRENCY})")
+        print(f"\tOn sale: {self.steam_on_sale}\tDiscount: {self.steam_discount}%\tPrice: {self.steam_price}{self.CURRENCY}")
+        print(f"Epic Store (Base price: {self.epic_base_price}{self.CURRENCY})")
+        print(f"\tOn sale: {self.epic_on_sale}\tDiscount: {self.epic_discount}%\tPrice: {self.epic_price}{self.CURRENCY}")
