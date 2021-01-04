@@ -16,4 +16,5 @@ Issues:
 
 
 Unofficial documentation for Steam API from: https://wiki.teamfortress.com/wiki/User:RJackson/StorefrontAPI
+
 Epic Games API based on: https://github.com/SD4RK/epicstore_api
