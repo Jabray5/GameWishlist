@@ -1,4 +1,4 @@
-## GameScout
+## GameWishlist
 
 Keeps track of video game prices across multiple stores, and alerts user to sales/discounts.
 
