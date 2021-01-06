@@ -1,14 +1,8 @@
-from wishlist import Wishlist
+import tests
 
 
 def main():
-    w = Wishlist()
-
-    w.wishlist_add("Death stranding")
-    w.wishlist_add("Cyberpunk 2077")
-    w.wishlist_add("Grand Theft Auto V")
-
-    w.print_all_game_info()
+    tests.random_test(3)
 
 
 if __name__ == "__main__":

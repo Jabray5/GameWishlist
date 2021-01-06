@@ -6,8 +6,11 @@ class EpicStoreAPI(EpicGamesStoreAPI):
 
     def get_slug_from_query(self, query):
         # Grabs slug from the first search result. Could be expanded to iterate through results and check title
-        slug = self.fetch_store_games(count=1, keywords=query)["data"]["Catalog"]["searchStore"]["elements"][0][
+        try:
+            slug = self.fetch_store_games(count=1, keywords=query)["data"]["Catalog"]["searchStore"]["elements"][0][
             "productSlug"].rstrip("/home")
+        except(IndexError):
+            return(None)
         return slug
 
     def get_price_from_slug(self, slug):

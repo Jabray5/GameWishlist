@@ -23,8 +23,9 @@ class Game:
 
         epic_api = epic.EpicStoreAPI(country=self.COUNTRY_CODE)
         self.epic_slug = epic_api.get_slug_from_query(self.title)
-        self.epic_base_price, self.epic_price, self.epic_discount = epic_api.get_price_from_slug(self.epic_slug).values()
-        self.epic_on_sale = self.epic_discount > 0
+        if self.epic_slug is not None:
+            self.epic_base_price, self.epic_price, self.epic_discount = epic_api.get_price_from_slug(self.epic_slug).values()
+            self.epic_on_sale = self.epic_discount > 0
 
         self.gog_price = None
 
