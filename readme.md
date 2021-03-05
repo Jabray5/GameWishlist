@@ -8,7 +8,8 @@ To implement:
 - <s>Steam Store</s>
 - <s>Epic Games Store</s>
 - GOG Store
-- Alert/messaging system
+- Alert/messaging system via Discord
+- Implement Python Threads
 
 Issues:
 - Steam sometimes grabs wrong game (e.g. 'Super Meat Boy Forever' instead of 'Super Meat Boy')
